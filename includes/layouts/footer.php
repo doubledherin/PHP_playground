@@ -1,1 +1,1 @@
-<div id="footer">Copyright 20xx, Widget Corp</div>
+<div id="footer">Copyright <?php echo date("Y"); ?>, Widget Corp</div>
