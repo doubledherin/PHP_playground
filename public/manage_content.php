@@ -11,13 +11,13 @@
 	</div> 
 	<div id="page">
 		<?php if ($current_subject) { ?>
-		<h2>Manage Subject</h2>
-		Menu name: <?php echo $current_subject["menu_name"]; ?><br />
-		<?php } elseif ($current_page) { ?>
-		<h2>Manage Page</h2>
-		Page name: <?php echo $current_page["menu_name"]; ?>
- 		<?php } else { ?>
- 			<?php echo "Please select a subject or a page."; ?>
+			<h2>Manage Subject</h2>
+			Menu name: <?php echo $current_subject["menu_name"]; ?><br />
+			<?php } elseif ($current_page) { ?>
+			<h2>Manage Page</h2>
+			Page name: <?php echo $current_page["menu_name"]; ?>
+	 		<?php } else { ?>
+	 			<?php echo "Please select a subject or a page."; ?>
  		<?php } ?>
 	</div>
 </div>
