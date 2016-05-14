@@ -32,6 +32,8 @@ if (isset($_POST['submit'])) {
 		$menu_name = mysql_prep($_POST["menu_name"]);
 		$position = (int) $_POST["position"];
 		$visible = (int) $_POST["visible"];
+		$content = mysql_prep($_POST["content"]);
+		$subject = (int) $_POST["subject_id"];
 	
 		$query  = "UPDATE pages SET ";
 		$query .= "menu_name = '{$menu_name}', ";
@@ -78,6 +80,9 @@ if (isset($_POST['submit'])) {
 		<form action="edit_page.php?page=<?php echo urlencode($current_page["id"]); ?>" method="post">
 		  <p>Page name:
 		    <input type="text" name="menu_name" value="<?php echo htmlentities($current_page["menu_name"]); ?>" />
+		  </p>
+		  <p>Subject:
+		    <input type="text" name="subject_id" value="<?php echo htmlentities($current_page["subject_id"]); ?>" />
 		  </p>
 		  <p>Position:
 		    <select name="position">
