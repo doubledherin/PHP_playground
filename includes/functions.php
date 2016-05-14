@@ -1,5 +1,4 @@
 <?php
-
 	function redirect_to($new_location) {
 	  header("Location: " . $new_location);
 	  exit;
@@ -17,7 +16,20 @@
 			die("Database query failed.");
 		}
 	}
-	
+	function form_errors($errors=array()) {
+		$output = "";
+		if (!empty($errors)) {
+			$output = "<div class=\"error\">";
+			$output .= "Please fix the following errors: ";
+			$output .= "<ul>";
+			foreach ($errors as $key => $error) {
+				$output .= "<li>{$error}</li>";
+			}
+			$output .= "</ul>";
+			$output .= "</div>";
+		}
+		return $output;
+	}	
 	function find_all_subjects() {
 		global $connection;
 		
