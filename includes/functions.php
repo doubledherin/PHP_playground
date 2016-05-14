@@ -60,6 +60,20 @@
 		return $page_set;
 	}
 	
+	function find_subject_for_page($page_id) {
+		global $connection;
+		
+		$safe_page_id = mysqli_real_escape_string($connection, $page_id);
+		
+		$query  = "SELECT subject_id ";
+		$query .= "FROM pages ";
+		$query .= "WHERE id = {$safe_page_id} ";
+		$query .= "LIMIT 1";
+		$subject_id = mysqli_query($connection, $query);
+		confirm_query($subject_id);
+		return $subject_id;
+	}
+
 	function find_subject_by_id($subject_id) {
 		global $connection;
 		
@@ -77,7 +91,6 @@
 			return null;
 		}
 	}
-
 	function find_page_by_id($page_id) {
 		global $connection;
 		

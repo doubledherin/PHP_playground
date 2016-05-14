@@ -7,7 +7,7 @@
 <div id="main">
 	<div id="navigation">
 		<br />
-		<a href="admin.php"></a>&laquo; Main menu<br />
+		<a href="admin.php">&laquo; Main menu<br /></a>
 		<?php echo navigation($current_subject, $current_page); ?>
 		<br />
 		<a href="new_subject.php">+ Add a subject</a>
@@ -20,7 +20,9 @@
 				Position: <?php echo $current_subject["position"]; ?><br />
 				Visible: <?php echo $current_subject["visible"] == 1 ? 'yes' : 'no'; ?><br />
 				<br />
-				<a href="edit_subject.php?subject=<?php echo urlencode($current_subject["id"]); ?>">Edit Subject</a>
+				<a href="edit_subject.php?subject=<?php echo urlencode($current_subject["id"]); ?>">Edit Subject</a><br />
+				<br />
+				<a href="new_page.php?subject=<?php echo urlencode($current_subject["id"]); ?>">Add Page</a>
 			<?php } elseif ($current_page) { ?>
 			<h2>Manage Page</h2>
 				Menu name: <?php echo htmlentities($current_page["menu_name"]); ?><br />
@@ -31,6 +33,9 @@
 				<div class="view-content">
 				<?php echo htmlentities($current_page["content"]); ?>
 				</div>
+				<a href="edit_page.php?page=<?php echo urlencode($current_page["id"]); ?>">Edit Page</a><br />
+				<br />
+				<a href="new_page.php?page=<?php echo urlencode($current_page["id"]); ?>">Add Page</a>
 	 		<?php } else { ?>
 	 			<?php echo "Please select a subject or a page."; ?>
  		<?php } ?>
