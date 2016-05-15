@@ -8,7 +8,7 @@
 		// subject couldn't be found in database
 		redirect_to("manage_content.php");
 	}
-	$pages_set = find_pages_for_subject($current_subject["id"]);
+	$pages_set = find_pages_for_subject($current_subject["id"], $public=false);
 	if (mysqli_num_rows($pages_set) > 0) {
 		// Failure
 		$_SESSION["message"] = "Can't delete a subject with pages.";

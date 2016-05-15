@@ -57,12 +57,12 @@ if (isset($_POST['submit'])) {
 } // end: if (isset($_POST['submit']))
 
 ?>
-
+<?php $layout_context = "admin" ;?>
 <?php include("../includes/layouts/header.php"); ?>
 
 <div id="main">
   <div id="navigation">
-		<?php echo navigation($current_subject, $current_page); ?>
+		<?php echo navigation($current_subject, $current_page, $public=false); ?>
   </div>
   <div id="page">
 		<?php // $message is just a variable, doesn't use the SESSION
@@ -80,7 +80,7 @@ if (isset($_POST['submit'])) {
 		  <p>Position:
 		    <select name="position">
 				<?php
-					$subject_set = find_all_subjects();
+					$subject_set = find_all_subjects($public=false);
 					$subject_count = mysqli_num_rows($subject_set);
 					for($count=1; $count <= $subject_count; $count++) {
 						echo "<option value=\"{$count}\"";

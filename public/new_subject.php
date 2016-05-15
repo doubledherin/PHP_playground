@@ -1,12 +1,13 @@
 <?php require_once("../includes/session.php"); ?>
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
+<?php $layout_context = "admin" ;?>
 <?php include("../includes/layouts/header.php"); ?>
 <?php find_selected_page(); ?>
 
 <div id="main">
   <div id="navigation">
-		<?php echo navigation($current_subject, $current_page); ?>
+		<?php echo navigation($current_subject, $current_page, $public=false); ?>
   </div>
   <div id="page">
 	  	<?php echo message(); ?>
@@ -20,7 +21,7 @@
 		  <p>Position:
 		    <select name="position">
 				<?php
-					$subject_set = find_all_subjects();
+					$subject_set = find_all_subjects($public=false);
 					$subject_count = mysqli_num_rows($subject_set);
 					for($count=1; $count <= ($subject_count + 1); $count++) {
 						echo "<option value=\"{$count}\">{$count}</option>";

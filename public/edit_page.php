@@ -61,12 +61,12 @@ if (isset($_POST['submit'])) {
 } // end: if (isset($_POST['submit']))
 
 ?>
-
+<?php $layout_context = "admin" ;?>
 <?php include("../includes/layouts/header.php"); ?>
 
 <div id="main">
   <div id="navigation">
-    <?php echo navigation($current_subject, $current_page); ?>
+    <?php echo navigation($current_subject, $current_page, $public=false); ?>
   </div>
   <div id="page">
     <?php echo message(); ?>
@@ -80,7 +80,7 @@ if (isset($_POST['submit'])) {
       <p>Position:
         <select name="position">
         <?php
-          $page_set = find_pages_for_subject($current_page["subject_id"]);
+          $page_set = find_pages_for_subject($current_page["subject_id"], $public=false);
           $page_count = mysqli_num_rows($page_set);
           for($count=1; $count <= $page_count; $count++) {
             echo "<option value=\"{$count}\"";
