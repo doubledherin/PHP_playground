@@ -22,7 +22,21 @@
 				<br />
 				<a href="edit_subject.php?subject=<?php echo urlencode($current_subject["id"]); ?>">Edit Subject</a><br />
 				<br />
-				<a href="new_page.php?subject=<?php echo urlencode($current_subject["id"]); ?>">Add Page</a>
+				<div style ="margin-top: 2em; border-top: 1px solid #000000;">
+				<h3>Pages in this subject:</h3>
+				<ul>
+				<?php
+					$subject_pages = find_pages_for_subject($current_subject["id"]);
+					while($page = mysqli_fetch_assoc($subject_pages)) {
+						echo "<li>";
+						$safe_page_id = urlencode($page["id"]);
+						echo "<a href=\"manage_content.php?page={$safe_page_id}\">";
+						echo htmlentities($page["menu_name"]);
+						echo "</a>";
+						echo "</li>";
+					}
+				?>
+				<a href="new_page.php?subject=<?php echo urlencode($current_subject["id"]); ?>">Add a new page to this subject</a>
 			<?php } elseif ($current_page) { ?>
 			<h2>Manage Page</h2>
 				Page name: <?php echo htmlentities($current_page["menu_name"]); ?><br />
@@ -35,7 +49,6 @@
 				</div>
 				<a href="edit_page.php?page=<?php echo urlencode($current_page["id"]); ?>">Edit Page</a><br />
 				<br />
-				<a href="new_page.php?page=<?php echo urlencode($current_page["id"]); ?>">Add Page</a>
 	 		<?php } else { ?>
 	 			<?php echo "Please select a subject or a page."; ?>
  		<?php } ?>
