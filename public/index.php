@@ -4,19 +4,17 @@
 <?php $layout_context = "public"; ?>
 <?php include("../includes/layouts/header.php"); ?>
 
-<?php find_selected_page(); ?>
+<?php find_selected_page($public=true); ?>
 <div id="main">
 	<div id="navigation">
 		<?php echo navigation($current_subject, $current_page, $public=true); ?>
 	</div> 
 	<div id="page">
-		<?php if ($current_subject) { ?>
-			<h2>Manage Subject</h2>
-				Menu name: <?php echo htmlentities($current_subject["menu_name"]); ?><br />
-			<?php } elseif ($current_page) { ?>
-				<?php echo htmlentities($current_page["content"]); ?>
-	 		<?php } else { ?>
-	 			Please select a subject or a page.
+		<?php if ($current_page) { ?>
+			<h2><?php echo htmlentities($current_page["menu_name"]); ?></h2>
+			<?php echo nl2br(htmlentities($current_page["content"])); ?>
+ 		<?php } else { ?>
+ 			<p>Welcome!</p>
  		<?php } ?>
 	</div>
 </div>
